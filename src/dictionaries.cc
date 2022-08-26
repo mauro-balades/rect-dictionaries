@@ -1,8 +1,13 @@
 
 #include "dictionaries/dictionaries.h"
 #include "rgoc/systemlib/objects.h"
+#include "rgoc/systemlib/exceptions.h"
 
 #include <utility>
+
+#define ITEM_NOT_FOUND() \
+    std::string message = "Dictionary: item '";  \
+    exc_Throw( (char*)(message + (const char*)p_key->buffer + "' not found").c_str() ); \
 
 namespace rect_dictionaries {
 
@@ -13,7 +18,7 @@ namespace rect_dictionaries {
     class_Any* Dictionary::Get(class_String* p_key) {
         std::map<std::string, class_Any*>::iterator item = _data.find(p_key->buffer);
         if (item == _data.end()) {
-            // TODO: throw error
+            ITEM_NOT_FOUND()
         }
 
         return item->second;
@@ -22,7 +27,7 @@ namespace rect_dictionaries {
     void Dictionary::Remove(class_String* p_key) {
         std::map<std::string, class_Any*>::iterator item = _data.find(p_key->buffer);
         if (item == _data.end()) {
-            // TODO: throw error
+            ITEM_NOT_FOUND()
         }
 
         _data.erase(item);
@@ -37,6 +42,6 @@ namespace rect_dictionaries {
     }
 
     class_Array* Dictionary::Keys() {
-        
+
     }
 }
