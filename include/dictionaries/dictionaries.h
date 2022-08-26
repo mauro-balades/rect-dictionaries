@@ -9,24 +9,23 @@
 
 namespace rect_dictionaries {
 
-    template <class T>
-    class Dictionary : public std::map<std::string, T> {
+    class Dictionary {
 
         public:
 
-            Dictionary();
+            Dictionary() {};
 
-            void Set(class_String*, class_Any*);
-            class_String* Get(class_String*);
-            void Remove(class_String*);
+            int Set(class_String* p_key, class_Any* p_value);
+            class_Any* Get(class_String* p_key);
+            void Remove(class_String* p_key);
             void Clear();
             int Length();
             class_Array* Keys();
 
-            ~Dictionary();
+            ~Dictionary() {};
 
-        // private:
-
+        private:
+            std::map<std::string, class_Any*> _data;
     };
 }
 

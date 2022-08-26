@@ -3,7 +3,7 @@ OPT = opt
 LLINK = llvm-link
 LLDIS = llvm-dis
 
-INCLUDE := -I./include -I./third_party/rgoc/
+INCLUDE := -I./include -I./third_party
 SOURCEDIR := ./src
 SOURCES := $(wildcard $(SOURCEDIR)/*.cc)
 OBJDIR=./obj
