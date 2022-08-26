@@ -36,4 +36,4 @@
 *.ll
 *.bc
 
-./out.zip
+*.zip
