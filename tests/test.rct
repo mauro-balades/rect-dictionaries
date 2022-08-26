@@ -1,0 +1,14 @@
+package Dictionary; use Dictionary;
+package sys;
+
+var dict <- make Dictionary();
+
+dict->Set("hello", "world");
+sys::Print(dict->Get("hello"))
+
+dict->Set("hello", "adios");
+sys::Print(dict->Get("adios"))
+
+sys::Print(dict->Length())
+dict->Clear();
+sys::Print(dict->Length())

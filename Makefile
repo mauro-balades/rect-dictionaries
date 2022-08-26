@@ -31,6 +31,7 @@ clean:
 ruptime: $(OBJECTS)
 	$(LLINK) $^ > $(OBJDIR)/export_lib.bc
 	$(LLDIS) $(OBJDIR)/export_lib.bc > $(OBJDIR)/export_lib.ll
+	cp $(OBJDIR)/export_lib.ll ./tests/packages/export_lib.ll
 
 -include $(DEPENDS)
 
