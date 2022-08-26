@@ -3,6 +3,7 @@ OPT = opt
 LLINK = llvm-link
 LLDIS = llvm-dis
 
+INCLUDE := -I./include -I./third_party/rgoc/
 SOURCEDIR := ./src
 SOURCES := $(wildcard $(SOURCEDIR)/*.cc)
 OBJDIR=./obj
@@ -39,4 +40,4 @@ $(OBJDIR):
 #rule above to generate it. However with the symbol |
 # no ricompilation is perform if the folder if it modified
 $(OBJDIR)/%.bc: $(SOURCEDIR)/%.cc Makefile | $(OBJDIR)
-	$(CXX) $(WARNING) -emit-llvm -MMD -MP -c -S $< -o $@
+	$(CXX) $(WARNING) ${INCLUDE} -emit-llvm -MMD -MP -c -S $< -o $@
